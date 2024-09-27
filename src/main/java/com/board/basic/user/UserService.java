@@ -5,6 +5,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
@@ -20,5 +22,11 @@ public class UserService {
         this.userRepository.save(user);
         return user;
     }
+    public SiteUser getUser(String username) {
+        Optional<SiteUser> siteUser = this.userRepository.findByusername(username);
+            return siteUser.get();
+
+    }
+
 
 }
